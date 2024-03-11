@@ -1,0 +1,24 @@
+﻿@model Cat
+@{
+    ViewData["Title"] = "Cat test page";
+    // if (User.IsInRole("Admin"))
+    // {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    // }
+    
+    //Layout = null;
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div>
+        <h3>@Model.Name</h3>
+        <span>@Model.Color</span>
+        <span>@Model.Age</span>
+    </div>
+</body>
+</html>

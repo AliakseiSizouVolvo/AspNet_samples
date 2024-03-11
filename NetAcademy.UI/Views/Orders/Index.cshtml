@@ -1,0 +1,29 @@
+﻿@* single line of C# inserts in view *@
+@using NetAcademy.Services;
+
+@model OrderSmth[]
+
+@* multi-line C# code in View *@
+@if (Model != null)
+{
+    foreach (var order in Model)
+    {
+        
+            await Html.RenderPartialAsync("_OrderPreview", order);
+        
+
+        @* <div>
+            @* single line of C# inserts in view 
+            <h3>@order.OrderSmthId</h3>
+            <p>@order.OrderSmthData</p>
+            <p>@order.OrderSmthDate</p>
+            <p>@order.OrderSmthSendTime</p>
+            <p>@order.Address</p>
+            <p>@order.CustomerFullname</p>
+            <p>@order.OrderSmthComment</p>
+        </div> *@
+
+        @* <span>@order.ToString()</span> *@
+    }
+}
+

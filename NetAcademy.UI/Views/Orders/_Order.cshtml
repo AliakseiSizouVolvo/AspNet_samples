@@ -1,0 +1,14 @@
+﻿@model OrderViewModel
+
+<h4>Order @Model.Id</h4>
+<div>@Model.OrderDate</div>
+<div>
+    <b>@Model.State</b>
+</div>
+
+@foreach (var item in Model.OrderItems)
+{
+    <div class="order-item">
+    @{ await Html.RenderPartialAsync("_OrderItem", item); }
+    </div>
+}

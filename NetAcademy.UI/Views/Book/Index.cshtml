@@ -1,0 +1,22 @@
+﻿@model BookModel[]
+
+@{
+    ViewBag.Title = "Books";
+    Layout = "_Layout";
+}
+
+<h2>Books</h2>
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Book">Create</a>
+
+<div>
+@foreach (var book in Model)
+{
+    <div>
+        <h4>@book.Name</h4>
+        <h6>@book.ISBN</h6>
+        <p>@book.Price</p>
+        <p>@book.Year</p>
+    </div>
+}
+</div>

@@ -1,0 +1,46 @@
+﻿@model Cat
+
+@* <div>
+    @using (Html.BeginForm("EditCat", "Test", 
+                null, 
+                FormMethod.Post, 
+                true, 
+                new {@class = "my-custom-form"})){
+        <div class="input-group">
+            @Html.LabelFor(cat => cat.Name, nameof(Model.Name), new {@class="form-label"})
+            @Html.EditorFor(cat => cat.Name, new {@class="form-text"})
+        </div>
+        @*standard
+        @Html.TextBox("Cat", "Cat")
+        <div class="input-group">
+            @*strongly typed
+            @Html.LabelFor(cat => cat.Age)
+            @Html.EditorFor(cat => cat.Age)
+        </div>
+        <div class="input-group">
+            @Html.LabelFor(cat => cat.Color)
+            @Html.EditorFor(cat => cat.Color)
+        </div>
+        <button class="btn">Submit</button>
+    }
+</div>
+@Html.ActionLink("Go back", "Index", "Home")
+ *@
+ 
+<div>
+    <form asp-action="EditCat" asp-controller="Test" method="post">
+        <div class="input-group">
+            <label class="col-form-label" asp-for="Name">@nameof(Model.Name)</label>
+            <input asp-for="Name" class="form-text" type="text"/>
+        </div>
+        <div class="input-group">
+            <label class="col-form-label" asp-for="Age">@nameof(Model.Age)</label>
+            <input asp-for="Age" class="form-text" type="number"/>
+        </div>
+        <div class="input-group">
+            <label class="col-form-label" asp-for="Color">@nameof(Model.Color)</label>
+            <input asp-for="Color" type="color" class="form-text"/>
+        </div>
+        <button class="btn btn-danger">Submit</button>
+    </form>
+</div>

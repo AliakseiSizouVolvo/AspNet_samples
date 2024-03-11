@@ -1,0 +1,33 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+@* <div>
+    <form action="~/user/loginuser" method="post">
+        <label for="email-input">Email:</label>
+        <br>
+        <input type="text" id="email-input" name="email"/>
+        <br/>
+        <label for="pswd-input">Password</label>
+        <br/>
+        <input type="password" id="pswd-input" name="password" />
+        <br/>
+        <input type="submit" value="Login"/>
+    </form>
+</div> *@
+
+<div>
+    <form asp-action="LoginUser" method="post">
+        <label for="email-input">Email:</label>
+        <br>
+        <input type="text" id="email-input" asp-for="Email" />
+        <br />
+        <label for="pswd-input">Password</label>
+        <br />
+        <input type="password" id="pswd-input" asp-for="Password" />
+        <br /> 
+        <br />
+        <input type="submit" value="Login" />
+    </form>
+</div>
+

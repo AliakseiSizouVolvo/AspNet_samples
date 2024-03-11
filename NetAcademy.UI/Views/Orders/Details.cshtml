@@ -1,0 +1,41 @@
+﻿@using NetAcademy.Services
+@using NetAcademy.Services.Abstractions
+@inject ICustomerOrderService CustomerOrderService
+@model OrderSmth
+@{
+    ViewData["Title"] = "Details";
+}
+@* single line of C# inserts in view *@
+
+@* <h1>OrderSmth @((ViewData["FirstOrderSmth"] as OrderSmth).OrderSmthId)</h1>
+
+
+<div>
+    @((ViewData["FirstOrderSmth"] as OrderSmth).OrderSmthData)
+</div>
+
+
+<h1>OrderSmth @ViewBag.SecondOrderSmth.OrderSmthId</h1>
+
+
+<div>
+    @ViewBag.SecondOrderSmth.OrderSmthData
+</div> *@
+
+<h4>@CustomerOrderService.GetSomeLocalizedString("hello")</h4>
+
+<div>
+@{ await Html.RenderPartialAsync("OrderPreview", Model); }
+</div>
+@* @{ await Html.RenderPartialAsync("OrderSmthPreview"); } *@
+@* @await Html.PartialAsync("OrderSmthPreview", Model);  *@
+
+
+@* 
+    RenderPartial vs Partial
+    RenderPartialAsync cs PartialAsync
+    RenderComponent vs Component
+    //async version
+    Action & RenderAction + async 
+
+*@

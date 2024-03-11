@@ -1,0 +1,8 @@
+﻿@model OrderViewModel[]
+
+@foreach (var order in Model)
+{
+    <div class="order">
+        @{ await Html.RenderPartialAsync("_Order", order); }
+    </div>
+}
