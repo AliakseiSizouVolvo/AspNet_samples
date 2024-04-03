@@ -18,6 +18,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,21 +28,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Test\EditCat.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Test\EditCat.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Test\ViewCat.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Test\ViewCat.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\AccessDenied.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ConfigSettings\" />
     <Folder Include="Views\Book\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\AccessDenied.cshtml" />
   </ItemGroup>
 
 </Project>

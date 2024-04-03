@@ -2,7 +2,7 @@
 
 namespace NetAcademy.UI.Models
 {
-    public class BookModel
+    public class BookModel //: IValidatableObject
     {
         public Guid Id { get; set; }
 
@@ -13,6 +13,7 @@ namespace NetAcademy.UI.Models
         [StringLength(100,
             ErrorMessage = "String should have from 2 to 100 symbols", 
             MinimumLength = 2)]
+
         public string Name { get; set; }
 
         //[Range(-500, 2025)]
@@ -20,6 +21,17 @@ namespace NetAcademy.UI.Models
         public int? Year { get; set; }
 
         [Required]
+        //[DisplayFormat(DataFormatString = )]
         public decimal Price { get; set; }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    var errors = new List<ValidationResult>();
+            
+        //    //in case any issues
+        //    errors.Add(new ValidationResult(""));
+
+        //    return errors;
+        //}
     }
 }

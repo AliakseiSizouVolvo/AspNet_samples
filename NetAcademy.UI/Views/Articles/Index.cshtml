@@ -1,0 +1,18 @@
+﻿@model ArticlesIndexViewModel
+
+<h2>Articles</h2>
+
+@if (Model.IsAdmin)
+{
+    <div class="row">
+        <a asp-action="Aggregate" asp-controller="Articles" class="col-12 col-lg-4 btn btn-danger">Aggregate</a>
+    </div>
+}
+
+@if (Model.Articles.Any())
+{
+    foreach (var article in Model.Articles)
+    {
+        await Html.RenderPartialAsync("_ArticlePreview", article);
+    }
+}

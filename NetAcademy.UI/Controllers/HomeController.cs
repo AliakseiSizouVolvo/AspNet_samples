@@ -2,14 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 using NetAcademy.UI.Models;
 using System.Diagnostics;
 using NetAcademy.UI.ConfigSettings;
+using NetAcademy.UI.Filters;
 
 namespace NetAcademy.UI.Controllers
 {
-    //public class HomeController .... SomeName[Controller]
-    //[Controller]
-    //[NonController]
-
+   
     //GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+    [IEFilter]
+    //[TypeFilter(typeof(DIActionFilterAttribute))]
+    //[ServiceFilter(typeof(DIActionFilterAttribute))]
+    [CustomException]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,32 +23,24 @@ namespace NetAcademy.UI.Controllers
             _configuration = configuration;
         }
 
-        //[NonAction]
         [HttpGet]
-        public IActionResult Index()
+        //[CheckData]
+        //[SecretToken("_very secret data, don't tell anyone_")]
+        //[WhitespaceRemover]
+        public IActionResult Index(/*int id*/)
         {
+            _logger.LogTrace("[TRACE] Hello from main page logger");
+            _logger.LogDebug("[DEBUG] Hello from main page logger");
+            _logger.LogInformation("[INFORMATION] Hello from main page logger");
+            _logger.LogWarning("[WARNING] Hello from main page logger");
+            _logger.LogError("[ERROR] Hello from main page logger");
+            _logger.LogCritical("[CRITICAL] Hello from main page logger");
             var dataFromQuery = Request.Query;
             return View();
         }
         //route, forms, body, headers 
 
-        //[ActionName("SomeTest")]
-        //[HttpPost]
-        [HttpGet]
-        public IActionResult Test()
-        {
-            //var settings = _configuration.GetSection("AppSettings").GetSection("Secret1").Value;
-            //var settingSections = _configuration.GetChildren();
-            //var connString = _configuration.GetConnectionString("Default");
-            //var reloadToken = _configuration.GetReloadToken();
-
-            //var secret1 = _configuration["AppSettings:Secret1"];
-            //_configuration["AppSettings:Secret1"] = "123123";
-            //var secret12 = _configuration["AppSettings:Secret1"];
-            var secrets = _configuration.GetSection("AppSettings").Get<AppSettings>();
-            return Ok("home/test");
-        }
-
+       
         [HttpGet]
         public IActionResult Test2(PersonModel person)
         {
@@ -79,7 +73,18 @@ namespace NetAcademy.UI.Controllers
         // GET, POST, DELETE, PUT, (PATCH?)
         public IActionResult Privacy()
         {
-            return View();
+            try
+            {
+                var x = 0; var y = 15;
+                var result = y / x;
+                return View();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e,"Divide by zero");
+                throw;
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

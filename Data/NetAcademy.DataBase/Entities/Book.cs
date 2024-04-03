@@ -1,8 +1,13 @@
-﻿namespace NetAcademy.DataBase.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace NetAcademy.DataBase.Entities;
 
 public class Book
 {
+    
     public Guid Id { get; set; }
+
     
     public string ISBN { get; set; }
     

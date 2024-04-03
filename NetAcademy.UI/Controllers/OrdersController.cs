@@ -35,14 +35,6 @@ namespace NetAcademy.UI.Controllers
             return BadRequest();
         }
 
-        public IActionResult OrderPreview()
-        {
-            var order = _customerOrderService.GetOrdersOfCustomer()
-                .FirstOrDefault();
-
-            return PartialView();
-        }
-
         public async Task<IActionResult> OrdersHistory()
         {
             var orderHistoryEntities = await _ordersService.GetOrderHistory(Guid.Empty);//user Id

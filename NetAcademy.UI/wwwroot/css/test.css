@@ -1,0 +1,37 @@
+﻿div {
+    background-color: rgba(255, 0,0, 0.1) !important; /*colors can use one of way of naming:
+        - name: red, green, cyan, etc.... 
+        - rgb color code: #ffaabb hex (16 symbols) 
+        - rgba color code: #ffaabb10 
+        - rgb/rgba as 3/4 values 
+    */
+  /*  margin: 10px 5px; 
+    padding: 5px;*/
+
+    margin: 10px 5px 8px 3px;
+    margin-left: 25px;
+
+
+
+    /*width: 100%;*/
+    /*font-size: 10vh;*/ /*vh - viewpoint height, vw - viewpoint width (1% of viewport width = 1vw) */
+}
+
+.greetings {
+    border-top: 2px dotted green;
+    border-bottom: 4px double red;
+    border-left: 3px dashed orange;
+    color: black;
+}
+
+.form {
+    font-size: 20px;
+}
+
+#first-form{
+    background-color: rgba(0,255,0, 0.2) !important;
+}
+
+/*div h1 h2 h3 h4 h5 h6 p b i ul ol il span label {
+    color: red;
+}*/
