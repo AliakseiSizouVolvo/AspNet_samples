@@ -12,4 +12,7 @@ public class Article
     //image(preview)
     
     public string SourceLink { get; set; }
+    
+    public Guid? SourceId { get; set; }
+    public Source? Source { get; set; }
 }

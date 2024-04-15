@@ -1,6 +1,32 @@
-﻿using NetAcademy.Services.Abstractions;
+﻿using System.Runtime.InteropServices;
+using NetAcademy.Services.Abstractions;
 
 namespace NetAcademy.Services.Implementation;
+
+public class TestService
+{
+    private readonly IUserService _userService;
+
+    public TestService(IUserService userService)
+    {
+        _userService = userService;
+    }
+
+    public async Task<bool> IsPasswordIncorrect
+        (string email, string password)
+    {
+        var result = await _userService.CheckPassword(email, password);
+        var randValue = new Random().Next(0, 1);
+        return Convert.ToBoolean(randValue);
+    }
+
+    public async Task<bool> IsPasswordCorrect
+        (string email, string password)
+    {
+        var result = await _userService.CheckPassword(email, password);
+        return result;
+    }
+}
 
 public class Test1Service : ITest1Service
 {

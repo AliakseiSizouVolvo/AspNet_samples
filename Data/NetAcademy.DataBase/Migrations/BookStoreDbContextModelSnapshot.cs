@@ -35,6 +35,9 @@ namespace NetAcademy.DataBase.Migrations
                     b.Property<DateTime>("PublicationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("SourceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SourceLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -47,6 +50,8 @@ namespace NetAcademy.DataBase.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SourceId");
 
                     b.ToTable("Articles");
                 });
@@ -215,6 +220,29 @@ namespace NetAcademy.DataBase.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("NetAcademy.DataBase.Entities.Source", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OriginUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RssUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sources");
+                });
+
             modelBuilder.Entity("NetAcademy.DataBase.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -241,6 +269,15 @@ namespace NetAcademy.DataBase.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("NetAcademy.DataBase.Entities.Article", b =>
+                {
+                    b.HasOne("NetAcademy.DataBase.Entities.Source", "Source")
+                        .WithMany("Articles")
+                        .HasForeignKey("SourceId");
+
+                    b.Navigation("Source");
                 });
 
             modelBuilder.Entity("NetAcademy.DataBase.Entities.BookAuthor", b =>
@@ -344,6 +381,11 @@ namespace NetAcademy.DataBase.Migrations
             modelBuilder.Entity("NetAcademy.DataBase.Entities.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("NetAcademy.DataBase.Entities.Source", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("NetAcademy.DataBase.Entities.User", b =>

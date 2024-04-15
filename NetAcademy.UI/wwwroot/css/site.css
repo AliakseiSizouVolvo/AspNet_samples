@@ -26,5 +26,7 @@ body {
 }
 
 
-
+.card-text > img {
+    max-width: 100% !important;
+}
 

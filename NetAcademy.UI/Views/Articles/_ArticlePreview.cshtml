@@ -4,9 +4,9 @@
 <div class="card">
    <div class="card-body">
         <h3 class="card-title">@Model.Title</h3>
-        <p class="card-text">
-            @Html.Raw(Model.Description)
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-text">
+            @Html.Raw(Model.ShortDescription)
+        </div>
+        <a href="@Model.SourceLink" class="btn btn-primary">Go to @Model.SourceName</a>
     </div>
 </div>

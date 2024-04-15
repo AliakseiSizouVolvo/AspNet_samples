@@ -13,6 +13,7 @@ namespace NetAcademy.DataBase
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Source> Sources { get; set; }
         public DbSet<User> Users { get; set; }
 
         public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options) : base(options)

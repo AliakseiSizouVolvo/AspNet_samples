@@ -1,33 +1,29 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetAcademy.Services.Abstractions;
+using NetAcademy.UI.Mapper;
 using NetAcademy.UI.Models;
 
 namespace NetAcademy.UI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ArticlesController : Controller
     {
         private readonly IArticleService _articleService;
-
-        public ArticlesController(IArticleService articleService)
+        private readonly ArticleMapper _articleMapper;
+        public ArticlesController(IArticleService articleService,
+            ArticleMapper articleMapper)
         {
             _articleService = articleService;
+            _articleMapper = articleMapper;
         }
 
-        [Authorize(Policy = "OnlyFor18+")]
+        //[Authorize(Policy = "OnlyFor18+")]
         public async Task<IActionResult> Index()
         {
             var articles = (await _articleService.GetArticlesAsync())
-                .Select(article => new ArticleModel()
-                {
-                    Id = article.Id,
-                    Description = article.Description,
-                    PublicationDate = article.PublicationDate,
-                    SourceLink = article.SourceLink,
-                    Title = article.Title,
-                    Text = article.Text
-                }).ToArray();
+                .Select(article => _articleMapper.ArticleDtoToArticleModel(article))
+                .ToArray();
             var isAdmin = false;//todo check from claims or from DB 
             return View(new ArticlesIndexViewModel()
             {
@@ -36,7 +32,7 @@ namespace NetAcademy.UI.Controllers
             });
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AggregateAsync()
         {
             //split our aggregation to 3 steps 
@@ -45,7 +41,7 @@ namespace NetAcademy.UI.Controllers
             // after having an article twxt try to rate it
 
             var rssLink = @"https://www.pcgamesn.com/mainrss.xml";
-            await _articleService.AggregateFromSourceAsync(rssLink);
+            await _articleService.AggregateFromSourceAsync(rssLink, new CancellationToken());
 
             return RedirectToAction("Index");
         }

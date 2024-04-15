@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using NetAcademy.Data.CQS.Queries.Articles;
 using NetAcademy.DataBase;
 using NetAcademy.Services.Abstractions;
 using NetAcademy.Services.Implementation;
 using NetAcademy.UI.Filters;
+using NetAcademy.UI.Mapper;
 using NetAcademy.UI.RouteConstraints;
 using Serilog;
 
@@ -23,6 +25,7 @@ namespace NetAcademy.UI
             builder.Host.UseSerilog((context, configuration) =>
                 configuration.ReadFrom.Configuration(context.Configuration));
 
+            builder.Services.AddScoped<ArticleMapper>();
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(opt =>
@@ -68,6 +71,10 @@ namespace NetAcademy.UI
             builder.Services.AddScoped<IRoleService, RoleService>();
             //builder.Services.AddTransient<DIActionFilterAttribute>();
 
+            builder.Services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssembly(
+                    typeof(GetArticlesWithNoTextIdAndSourceLinkQuery).Assembly));
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
