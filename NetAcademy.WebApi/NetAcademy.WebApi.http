@@ -1,0 +1,6 @@
+@NetAcademy.WebApi_HostAddress = http://localhost:5103
+
+GET {{NetAcademy.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

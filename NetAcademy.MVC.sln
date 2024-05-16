@@ -21,11 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAcademy.Services.Tests",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7557E0B0-CA4F-4F6F-AE7F-51C673620BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAcademy.Mapping", "NetAcademy.Mapping\NetAcademy.Mapping.csproj", "{95447070-1EC1-49B8-9EC6-8FE1B97A55BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAcademy.Mapping", "NetAcademy.Mapping\NetAcademy.Mapping.csproj", "{95447070-1EC1-49B8-9EC6-8FE1B97A55BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAcademy.UI.Models", "NetAcademy.UI.Models\NetAcademy.UI.Models.csproj", "{86671884-ACC6-43B7-89B1-A3059D4491AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAcademy.UI.Models", "NetAcademy.UI.Models\NetAcademy.UI.Models.csproj", "{86671884-ACC6-43B7-89B1-A3059D4491AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAcademy.DTOs", "NetAcademy.DTOs\NetAcademy.DTOs.csproj", "{89960B38-B7EB-4620-93BF-17DA5DEBF6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAcademy.DTOs", "NetAcademy.DTOs\NetAcademy.DTOs.csproj", "{89960B38-B7EB-4620-93BF-17DA5DEBF6A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAcademy.WebApi", "NetAcademy.WebApi\NetAcademy.WebApi.csproj", "{C17821F8-AE4A-48EE-9210-9F7FCE24810C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{89960B38-B7EB-4620-93BF-17DA5DEBF6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89960B38-B7EB-4620-93BF-17DA5DEBF6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89960B38-B7EB-4620-93BF-17DA5DEBF6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17821F8-AE4A-48EE-9210-9F7FCE24810C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17821F8-AE4A-48EE-9210-9F7FCE24810C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17821F8-AE4A-48EE-9210-9F7FCE24810C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17821F8-AE4A-48EE-9210-9F7FCE24810C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

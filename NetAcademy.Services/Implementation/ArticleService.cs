@@ -79,15 +79,11 @@ public class ArticleService : IArticleService
                 var text = await GetArticleTextByUrl(article.Value);
                 data.Add(article.Key, text);
             }
-            //}
-
-                //        _logger.LogDebug("Articles was added to DB successfully");
-                //}
-                await _mediator.Send(new AddTextToArticlesCommand()
-                {
-                    ArticleTexts = data
-                }, cancellationToken);
-            }
+            await _mediator.Send(new AddTextToArticlesCommand()
+            {
+                ArticleTexts = data
+            }, cancellationToken);
+        }
         catch (Exception e)
         {
             throw;
